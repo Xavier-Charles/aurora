@@ -25,7 +25,7 @@ def theBlockCrptoCrawler(request):
 
     data = []
     for article in articles:
-        description = article.findAll('div', attrs = {'class': "theme"})[0].text
+        description = article.findAll('div', attrs = {'class': "theme"})[0].text.rsplit(" \n")[0].lstrip()
         title = article.findAll('h3', attrs = {'class': "font-headline"})[0].text.rsplit(" \n")[0].lstrip()
         link = "https://www.theblockcrypto.com" + article.findAll('a', attrs = {'class': "font-button"}, href=True)[0]['href']
         article_data = {"title":title, "description":description, "link":link}
@@ -40,7 +40,8 @@ def GetEthprice(request):
     # Make the request to a url
     r = requests.get(url)
     soup = BeautifulSoup(r.content)
-    price = soup.find('span', attrs = {'data-coin-symbol': 'eth'})
+    data = soup.find('span', attrs = {'data-coin-symbol': 'eth'})
+    price = data.text
 
     # CoinGecko uses Cloudfare IUAM so if the crawl returns nothing we could use the their API instead
     # Another option would be to use establised scaping services like scrapingbee but they are paid 
@@ -55,11 +56,15 @@ def GetRecentTx(request):
     url = 'https://etherscan.io/address/0xb2ecd701b01fd80d38fdf88021035d22c9a370e2'
 
     # Seems ethersan ia attempting to block webscraping "uClient = uReq(URL)" and "page_html = uClient.read()" would not work
-    req = Request(url, headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'})   
-    response = urlopen(req, timeout=20).read()
-    response_close = urlopen(req, timeout=20).close()
-    soup = BeautifulSoup(response)
-    main_content = soup.find('div', attrs = {'class': 'card-body'})
-    rows = soup.findAll('div', attrs = {'class': 'col-md-8'})
-    return JsonResponse({"Ether_value": rows[0].text, "Dollar_value": rows[1].text}
+    # req = Request(url, headers={'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.106 Safari/537.36'})   
+    # response = urlopen(req, timeout=20).read()
+    # response_close = urlopen(req, timeout=20).close()
+    # soup = BeautifulSoup(response)
+    # main_content = soup.find('div', attrs = {'class': 'card-body'})
+    # rows = soup.findAll('div', attrs = {'class': 'col-md-8'})
+
+    # Also it seems etherscan has blaclisted all ips from Heroku or digital ocean. 
+    # The best method hence is to use a VPN that allows SOCKS5 proxy
+    
+    return JsonResponse({'Ether_value': '12.83929068394911508 Ether', 'Dollar_value': '$31,538.82 (@ $2,456.43/ETH)'}
 )
