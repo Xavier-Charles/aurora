@@ -25,8 +25,8 @@ def theBlockCrptoCrawler(request):
 
     data = []
     for article in articles:
-        title = article.findAll('div', attrs = {'class': "theme"})[0].text
-        description = article.findAll('h3', attrs = {'class': "font-headline"})[0].text.rsplit(" \n")[0].lstrip()
+        description = article.findAll('div', attrs = {'class': "theme"})[0].text
+        title = article.findAll('h3', attrs = {'class': "font-headline"})[0].text.rsplit(" \n")[0].lstrip()
         link = "https://www.theblockcrypto.com" + article.findAll('a', attrs = {'class': "font-button"}, href=True)[0]['href']
         article_data = {"title":title, "description":description, "link":link}
         data.append(article_data)
