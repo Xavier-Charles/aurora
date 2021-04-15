@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/aurora/static/css/main.9d5b29c0.chunk.css",
+    "main.js": "/aurora/static/js/main.77db0a37.chunk.js",
+    "main.js.map": "/aurora/static/js/main.77db0a37.chunk.js.map",
+    "runtime-main.js": "/aurora/static/js/runtime-main.ed460d7e.js",
+    "runtime-main.js.map": "/aurora/static/js/runtime-main.ed460d7e.js.map",
+    "static/js/2.72e96a12.chunk.js": "/aurora/static/js/2.72e96a12.chunk.js",
+    "static/js/2.72e96a12.chunk.js.map": "/aurora/static/js/2.72e96a12.chunk.js.map",
+    "static/js/3.fb5d06aa.chunk.js": "/aurora/static/js/3.fb5d06aa.chunk.js",
+    "static/js/3.fb5d06aa.chunk.js.map": "/aurora/static/js/3.fb5d06aa.chunk.js.map",
+    "index.html": "/aurora/index.html",
+    "static/css/main.9d5b29c0.chunk.css.map": "/aurora/static/css/main.9d5b29c0.chunk.css.map",
+    "static/js/2.72e96a12.chunk.js.LICENSE.txt": "/aurora/static/js/2.72e96a12.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed460d7e.js",
+    "static/js/2.72e96a12.chunk.js",
+    "static/css/main.9d5b29c0.chunk.css",
+    "static/js/main.77db0a37.chunk.js"
+  ]
+}
